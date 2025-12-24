@@ -20,6 +20,5 @@ deDups(dt, rpcols = NULL, dwcol = NULL, ori = 1)
 }
 \description{
 如果rpcols对应的dwcol包含有效值与NA，NA会全部保留,
-
 如果rpcols对应的dwcol全部为NA，不处理(仅做全部列的unique处理)
 }

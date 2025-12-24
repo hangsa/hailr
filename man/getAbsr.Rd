@@ -2,18 +2,21 @@
 % Please edit documentation in R/utils.R
 \name{getAbsr}
 \alias{getAbsr}
-\title{根据项目当前位置获取参数的绝对地址,get absolute address
-若地址开头为 * 则获取icloud云盘地址}
+\title{get absolute address of a file/folder.}
 \usage{
 getAbsr(adr)
 }
 \arguments{
-\item{adr}{文件地址}
+\item{adr}{address of file/folder.}
 }
 \value{
-属性credb标识adr是否存在
+file address
 }
 \description{
-根据项目当前位置获取参数的绝对地址,get absolute address
-若地址开头为 * 则获取icloud云盘地址
+addr which begins with *, is icloud address in mac/win.
+addr which begins with space or ~,is full address of mac or linux.
+addr which begins with space or ~,is full address of mac or linux.
+}
+\details{
+additional property:credbile identifies file/folder exist or not
 }

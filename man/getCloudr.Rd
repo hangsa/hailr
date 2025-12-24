@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{getCloudr}
 \alias{getCloudr}
-\title{get icloud address}
+\title{get address of icloud.}
 \usage{
 getCloudr()
 }
@@ -10,10 +10,9 @@ getCloudr()
 NULL OR address of icloud folder.
 }
 \description{
-depends OS system : windows or mac
+icloud address depends OS system: windows or mac
 }
 \details{
-direction in windows:C:/Users/Administrator/iCloudDrive
-
-direction in macos:/Users/longsa/Library/Mobile Documents/com~apple~CloudDocs
+address in windows:C:/Users/Administrator/iCloudDrive
+address in macos:/Users/longsa/Library/Mobile Documents/com~apple~CloudDocs
 }

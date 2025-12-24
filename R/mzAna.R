@@ -1,17 +1,19 @@
 
 
 
-#' remove the repeated data of file analysis by AI.
+#' remove the duplicates of file analysis by AI.
 #' @description
 #' which data would be retained depends on time of analysis and state of analysis.
-#' if
-#有分析完成的，以首次完成的数据为准
-#全未分析完成的，以最新分析时间为准
+#' if analysised already! retain the first datetime of analysised.
+#' if analysising or not analysis yet! retain the last datetime of initiate analysis.
+#' @param dt data of analysis, data.table
+#' @param rpcols columns which have repated lines.
 anaDedup <- function(dt, rpcols = c('file_id', 'anatype')){
 
   dw = copy(dt)
 
-  if('No.' %in% names(dw)) dw[, c('No.') := NULL]
+  if('No.' %in% names(dw))
+    dw[, c('No.') := NULL]
 
   dw = unique(dw)
 
