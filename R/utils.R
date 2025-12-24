@@ -1,14 +1,13 @@
 
 
 
-#' get icloud address
+#' get address of icloud.
 #' @description
-#' depends OS system : windows or mac
+#' icloud address depends OS system: windows or mac
 #' @usage getCloudr()
 #' @details
-#' direction in windows:C:/Users/Administrator/iCloudDrive
-#'
-#' direction in macos:/Users/longsa/Library/Mobile Documents/com~apple~CloudDocs
+#' address in windows:C:/Users/Administrator/iCloudDrive
+#' address in macos:/Users/longsa/Library/Mobile Documents/com~apple~CloudDocs
 #' @return NULL OR address of icloud folder.
 #' @export
 getCloudr <- function(){
@@ -31,16 +30,22 @@ getCloudr <- function(){
 
 
 
-#' 根据项目当前位置获取参数的绝对地址,get absolute address
-#' 若地址开头为 * 则获取icloud云盘地址
-#' @param adr 文件地址
-#' @return 属性credb标识adr是否存在
+#' get absolute address of a file/folder.
+#' @description
+#' addr which begins with *, is icloud address in mac/win.
+#' addr which begins with space or ~,is full address of mac or linux.
+#' addr which begins with space or ~,is full address of mac or linux.
+#' @param adr address of file/folder.
+#' @details
+#' additional property:credbile identifies file/folder exist or not
+#'
+#' @return file address
 #' @export
 getAbsr <- function(adr){
 
   res = ''
 
-  #根据/分解路径
+  #split with '/'
   if(!is.character(adr) || adr == '')
     pd = ''
   else{
@@ -49,11 +54,11 @@ getAbsr <- function(adr){
   }
 
 
-  #开头为空或为~，为mac或linux完整地址
+  #addr which begins with space or ~,is full address of mac or linux.
   if(pd[1] %in% c('', '~')){
     res = adr
 
-    #开头为A-Z字幕；为windows完整地址
+  #addr which begins with letter A-Z, is full address of windows.
   }else if(grepl('[a-zA-Z]\\:', pd[1])){
     res = adr
 
@@ -321,8 +326,9 @@ replas <- function(x, pats, reps){
 #' @param dwcol 去重依据列,可为id、日期时间类，取值唯一。
 #' @param ori 为去重方向，1为保留dwcol中的最大值，0为保留dwcol中的最小值
 #' @return 返回去重后的data.table数据
-#' @description 如果rpcols对应的dwcol包含有效值与NA，NA会全部保留,
-#' @description 如果rpcols对应的dwcol全部为NA，不处理(仅做全部列的unique处理)
+#' @description
+#' 如果rpcols对应的dwcol包含有效值与NA，NA会全部保留,
+#' 如果rpcols对应的dwcol全部为NA，不处理(仅做全部列的unique处理)
 #' @importFrom data.table := setDT rbindlist
 #' @export
 deDups <- function(dt, rpcols = NULL, dwcol = NULL, ori = 1){
