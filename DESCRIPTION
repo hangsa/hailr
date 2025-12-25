@@ -15,7 +15,13 @@ Imports:
   data.table,
   FinCal,
   stringdist,
-  lubridate
+  lubridate,
+  magrittr,
+  DBI,
+  httr,
+  readxl,
+  purrr,
+  jsonlite
 RoxygenNote: 7.3.3
 Suggests: 
     testthat (>= 3.0.0)

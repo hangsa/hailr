@@ -4,7 +4,6 @@
 #' get address of icloud.
 #' @description
 #' icloud address depends OS system: windows or mac
-#' @usage getCloudr()
 #' @details
 #' address in windows:C:/Users/Administrator/iCloudDrive
 #' address in macos:/Users/longsa/Library/Mobile Documents/com~apple~CloudDocs
@@ -118,6 +117,7 @@ getAbsr <- function(adr){
 #' 检查cols是否是dt的列
 #' @param dt 为list,data.table,data.frame等包含列名的数据
 #' @param cols 为待验证的列名
+#' @return 返回F or T
 ckCols <- function(dt, cols){
   r = F
   if(is.null(dt)) return(r)
@@ -262,11 +262,12 @@ setDigit <- function(dt, mcols = 'value', digit = 1, skipx = list()){
 
 
 #' 根据patterns-reps对进行文本替换，patterns可为数字串
-#' 如x为数值型，默认增加|转换为字符，且reps前后增加|的匹配
-#' 如|234|23|，替换23时，不替换｜234｜中的23.
 #' @param x 待进行文本替换的字符或者数字
 #' @param pats 待替换的文本/数字串
 #' @param reps 替换后的文本串；与pats一一对应
+#' @details
+#' 如x为数值型，默认增加|转换为字符，且reps前后增加|的匹配
+#' 如|234|23|，替换23时，不替换｜234｜中的23.
 #' @return 返回替换后的文本串
 #' @export
 replas <- function(x, pats, reps){
@@ -487,6 +488,7 @@ Tsimilar <- function(sega, segb, methd = 'x'){
 #' @param rdate 给定的待获取的基于基准日期开始计算的日期
 #' @param sdate 基准开始日期
 #' @param width 计算间隔，可以是day/week/month
+#' @importFrom lubridate ymd weeks days
 #' @return 返回是第几day/week/month
 #' @export
 getDtag <- function(rdate = NULL, sdate = ymd(20250101), width = 'week'){

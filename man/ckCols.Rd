@@ -11,6 +11,9 @@ ckCols(dt, cols)
 
 \item{cols}{为待验证的列名}
 }
+\value{
+返回F or T
+}
 \description{
 检查cols是否是dt的列
 }

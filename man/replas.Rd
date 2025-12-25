@@ -2,9 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{replas}
 \alias{replas}
-\title{根据patterns-reps对进行文本替换，patterns可为数字串
-如x为数值型，默认增加|转换为字符，且reps前后增加|的匹配
-如|234|23|，替换23时，不替换｜234｜中的23.}
+\title{根据patterns-reps对进行文本替换，patterns可为数字串}
 \usage{
 replas(x, pats, reps)
 }
@@ -20,6 +18,8 @@ replas(x, pats, reps)
 }
 \description{
 根据patterns-reps对进行文本替换，patterns可为数字串
+}
+\details{
 如x为数值型，默认增加|转换为字符，且reps前后增加|的匹配
 如|234|23|，替换23时，不替换｜234｜中的23.
 }
