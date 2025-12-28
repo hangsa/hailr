@@ -136,7 +136,7 @@ api.jkdic <- function(rtype = 'debt', take = 500, skip = 0){
 get.jkdic <- function(rtype = 'debt', src = NULL){
 
   rdics = NULL
-  if(!jkCheck(rtype, 'rtype')){
+  if(!jkCheck(rtype, 'rtype') && is.null(rtype)){
     stop('Arg:rtype must be NULL or  one of [debt|benefit|cash|main].\n')
   }
 
