@@ -96,7 +96,7 @@ dbc.local <- function(dbname = 'finace', dbtype = 'postgres'){
 api.jkdic <- function(rtype = 'debt', take = 500, skip = 0){
   #需要能获取别的Teable数据库的api，如用于凉菜数据分析的diet库
 
-  if(!jkCheck(rtype, 'rtype')){
+  if(!jkCheck(rtype, 'rtype') && !is.null(rtype)){
     stop('Arg:rtype must be NULL or  one of [debt|benefit|cash|main].\n')
   }
 
