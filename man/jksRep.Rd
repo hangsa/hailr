@@ -25,9 +25,9 @@ jksRep(
 
 \item{dw}{是否重新下载jqka财报文件}
 
-\item{gr}{为公司收益增长率，默认15%}
+\item{gr}{为公司收益增长率，默认0.15}
 
-\item{xr}{为10年期国债收益率,默认8%}
+\item{xr}{为10年期国债收益率,默认0.08}
 }
 \value{
 返回财报数据列表list，包括vertical、horizontal两个表

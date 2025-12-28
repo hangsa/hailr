@@ -231,8 +231,8 @@ jkMillis <- function(dt, rtype = 'debt'){
 #' 计算各财报中需要增加的额外数据及估值
 #' @param dt data.table格式数据
 #' @param rtype jqka财报类型：debt,benefit,cash,main
-#' @param grate 为公司收益增长率，默认10%（增长五年），后续按3%增长
-#' @param xrate 为10年期国债收益率,默认8%
+#' @param grate 收益增长率，默认0.1增长五年，后续按0.03增长
+#' @param xrate 10年期国债收益率,默认0.08
 #' @import data.table
 #' @importFrom magrittr %>%
 #' @return 返回处理后的数据
@@ -292,8 +292,8 @@ jkCalc <- function(dt, rtype = 'debt', grate = 1, xrate = 0.08){
 
       #以近3年复合增长率 计算3年后的收入
       #再以折半的增长率，计算10年后的收入
-      r[, c('bs1') := Fincal::fv(r = ror1, n = 3, pv = epsAvg) %>% abs()]
-      r[, c('bs2') := Fincal::fv(r = ror1/2, n = 7, pv = bs1) %>% abs()]
+      r[, c('bs1') := FinCal::fv(r = ror1, n = 3, pv = epsAvg) %>% abs()]
+      r[, c('bs2') := FinCal::fv(r = ror1/2, n = 7, pv = bs1) %>% abs()]
 
 
       r[, c('pval1') := pv.annu.growth(xrate, ror1, 3, epsAvg)] #近3年现金流折现
@@ -305,8 +305,8 @@ jkCalc <- function(dt, rtype = 'debt', grate = 1, xrate = 0.08){
     }else{
       # 以预测的增长率grate计算，前五年为grate，5年后增长率减半，10年后增长率固定为3%（通胀率）
       # 关键还是预测的增长率情况！！！
-      r[, c('bs1') := Fincal::fv(r = grate, n = 5, pv = epsAvg) %>% abs()] #五年后的收益值
-      r[, c('bs2') := Fincal::fv(r = grate/2, n = 5, pv = bs1) %>% abs()] #十年后的收益值
+      r[, c('bs1') := FinCal::fv(r = grate, n = 5, pv = epsAvg) %>% abs()] #五年后的收益值
+      r[, c('bs2') := FinCal::fv(r = grate/2, n = 5, pv = bs1) %>% abs()] #十年后的收益值
 
       #以年金现值算法，计算每年收益现金流的折现
       r[, c('pval1') := pv.annu.growth(xrate, grate, 5, epsAvg)]
@@ -386,8 +386,8 @@ jkYoy <- function(dt, wcols = 'name', dcol = 'date', vcol = 'value'){
 #' @param prd jqka财报日期：year(年报), report(报告期汇总), simple(单报告期)
 #' @param pwd jqka财报文件保存地址
 #' @param dw 是否重新下载jqka财报文件
-#' @param gr 为公司收益增长率，默认15%
-#' @param xr 为10年期国债收益率,默认8%
+#' @param gr 为公司收益增长率，默认0.15
+#' @param xr 为10年期国债收益率,默认0.08
 #' @importFrom data.table :=
 #' @return 返回财报数据列表list，包括vertical、horizontal两个表
 #' @export

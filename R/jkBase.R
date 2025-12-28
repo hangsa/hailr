@@ -1,14 +1,14 @@
 
 
-#' check out jqka's data type.
-#' @description
-#' check type: rtype, period and drc.
-#' rtype: debt,benefit,cash,main
-#' period: year, report, simple
-#' drc: w2l, l2w
-#' @param x item need be checking.
-#' @param jktype kind of jqka's type: rtype/period/drc
+#' @title 校验jqka类型
+#' @description 支持的类型: rtype, period and drc.
+#' @param x 待校验的值
+#' @param jktype jqka校验类型
 #' @return F or T
+#' @details
+#' rtype类型包含的值: debt,benefit,cash,main
+#' period类型包含的值: year, report, simple
+#' drc类型包含的值: w2l, l2w
 #' @export
 jkCheck <- function(x = NULL, jktype = NULL){
   r = F
@@ -48,20 +48,21 @@ jkCheck <- function(x = NULL, jktype = NULL){
 
 
 
-#' 建立数据库本地数据库通道
-#' @param dbtype 数据库类型，目前支持postgres 与 mysql
+#' @title 建立数据库本地数据库通道
 #' @param dbname 数据库名称,默认finace
+#' @param dbtype 数据库类型，目前支持postgres 与 mysql
+#' @importFrom DBI dbConnect
 #' @return 返回已建立的数据库通道
 #' @export
 dbc.local <- function(dbname = 'finace', dbtype = 'postgres'){
   #需要关联不同的数据库，如用于凉菜分析的diet库
 
   if(dbtype == 'postgres'){
-    dbc = Postgres()
+    dbc = RPostgres::Postgres()
     usr = 'postgres'
   }else if(dbtype == 'mysql'){
     usr = 'root'
-    dbc = MySQL()
+    dbc = RMySQL::MySQL()
   }
 
   fcon = NULL

@@ -11,9 +11,9 @@ jkCalc(dt, rtype = "debt", grate = 1, xrate = 0.08)
 
 \item{rtype}{jqka财报类型：debt,benefit,cash,main}
 
-\item{grate}{为公司收益增长率，默认10%（增长五年），后续按3%增长}
+\item{grate}{收益增长率，默认0.1增长五年，后续按0.03增长}
 
-\item{xrate}{为10年期国债收益率,默认8%}
+\item{xrate}{10年期国债收益率,默认0.08}
 }
 \value{
 返回处理后的数据

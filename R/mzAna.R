@@ -18,7 +18,7 @@ anaDedup <- function(dt, rpcols = c('file_id', 'anatype')){
   dw = unique(dw)
 
   #引入辅助列auxiliary，标识是否分析完成
-  dw[, ax1 := ifelse(astat == '分析完成' | astat == 5, T, F)]
+  dw[, c('ax1') := ifelse(astat == '分析完成' | astat == 5, T, F)]
   #一个文件在一种分析中，只要有一次完成，即视为有完成的
   dw[, ax2 := any(ax1), by = rpcols]
 

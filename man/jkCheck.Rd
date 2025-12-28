@@ -2,21 +2,23 @@
 % Please edit documentation in R/jkBase.R
 \name{jkCheck}
 \alias{jkCheck}
-\title{check out jqka's data type.}
+\title{校验jqka类型}
 \usage{
 jkCheck(x = NULL, jktype = NULL)
 }
 \arguments{
-\item{x}{item need be checking.}
+\item{x}{待校验的值}
 
-\item{jktype}{kind of jqka's type: rtype/period/drc}
+\item{jktype}{jqka校验类型}
 }
 \value{
 F or T
 }
 \description{
-check type: rtype, period and drc.
-rtype: debt,benefit,cash,main
-period: year, report, simple
-drc: w2l, l2w
+支持的类型: rtype, period and drc.
+}
+\details{
+rtype类型包含的值: debt,benefit,cash,main
+period类型包含的值: year, report, simple
+drc类型包含的值: w2l, l2w
 }
