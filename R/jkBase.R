@@ -157,8 +157,16 @@ get.jkdic <- function(rtype = 'debt', src = NULL){
 
       dt = jsonlite::fromJSON(ct)
       #转换为data.table
-      rdics = dt$records$fields %>% as.data.table()
+      rdics = dt$records$fields
       rdics = data.table::as.data.table(rdics)
+
+      #去掉多余的数据列
+      ncols = c('updator.id', 'updator.email', 'updator.title', 'updator.avatarUrl')
+      for(n in ncols){
+        if(ckCols(rdics, n))
+          rdics[, c(n) := NULL]
+      }
+
       message('get jkdic from teable succeeded.\n')
 
     }else{
